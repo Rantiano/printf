@@ -10,16 +10,17 @@ void print_buf(char buf[], int *buf_count);/**
  */
 int my_printf(const char *format, ...)
 {
-int h, print = 0, print_me = 0;
-int buff_index = 0;
+int h, print_me = 0;
+handle_print(format, &h /* Happy to be here */);
+int buf_count = 0;
 int flags, width, size, precision;
-char buffer[BUFF_SIZE];
+char buf[BUFF_SIZE];
+va_list args;
 if (format == NULL)
 {
 write(1, "This is an Errors !!", 20);
 return (-1);
 }
-va_list args;
 va_start(args, format);
 for (h = 0; format[h] != '\0'; h++)
 {
@@ -28,29 +29,29 @@ if (format[h] == '%')
 h++;
 if (format[h] == '%')
 {
-putchr('%');
+putchar('%');
 print_me++;
 }
 else if (format[h] != '\0')
 {
-print_buf(buffer, buff_index);
+print_buf(buf, buf_count);
 flags = get_flags(format, &h);
 width = get_width(format, &h, args);
 precision = get_precision(format, &h, args);
 size = get_size(format, &h);
-handle_print(format, &h, args, buffer, &buff_index, flags,
+handle_print(format, &h, args, buf, buf_count,
 width, precision, size, flags, precision,  width);
 }
 }
 else
 {
-buffer[buff_index++] = format[h];
-if (buff_index == BUFF_SIZE)
-print_buf(buffer, &buff_index);
+buf[buf_count++] = format[h];
+if (buf_count == BUFF_SIZE)
+print_buf(buf, &buf_count);
 print_me++;
 }
 }
-print_buf(buffer, &buff_index);
+print_buf(buf, &buf_count);
 va_end(args);
 return (print_me);
 }
