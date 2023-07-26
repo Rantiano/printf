@@ -1,18 +1,17 @@
 #include "main.h"
 
 /**
- * is_printable - Checks through the loop if actually a character can be printed.
+ * is_printable - Checks through the loop if character is printable
  * @c: xter for checking
  *
  * Return: 1 if c can be  printed, or else print 0.
  */
 int is_printable(char c)
 {
-	/* If the character falls within ASCII range printable xters */
 	if (c >= 32 && c < 127)
-		return (1); /* Yes, the character is printable */
+		return (1)
 
-	return (0); /* No the character is not printable */
+	return (0);
 }
 
 /**
@@ -25,20 +24,19 @@ int is_printable(char c)
 int append_hexa_code(char ascii_code, char buffer[], int i)
 {
 	char map_to[] = "0123456789ABCDEF";
-	/* The hexadecmal representation format code is always 2 	  in this format */
-	/* Sum up hexadecimal representation of ASCII numbers */
-	if (ascii_code < 0) 
-	/*Get first 4 ASCII numnbers and determine corresponding 	hexa xter*/
-	ascii_code *= -1; 
+	/* The hexa representation format code is always 2 in this format */
+	if (ascii_code < 0)
+		ascii_code *= -1;
+
 	buffer[i++] = '\\';
 	buffer[i++] = 'x';
-	 /*Get first 4 ASCII numnbers and determine corresponding        hexa xter*/
+
 	buffer[i++] = map_to[ascii_code / 16];
 	buffer[i] = map_to[ascii_code % 16];
-	 /*Get first 4 ASCII numnbers and determine corresponding        hexa xter*/
+
 	return (3);
-	/*Return lenth of appende hexa*/
 }
+
 /**
  * is_digit - Checks whether digit is of type character
  * @c: This provides character to be checked
@@ -46,12 +44,11 @@ int append_hexa_code(char ascii_code, char buffer[], int i)
  * Return: 1 is c really a digit, 0 Else
  */
 int is_digit(char c)
-/* Check if xter is in range of 0 - 9 (ASCII Codes)*/
 {
 	if (c >= '0' && c <= '9')
-		return (1); /*Returns success: Is Digit */
+		return (1);
 
-	return (0); /* Returns 0: Is not Digit */
+	return (0);
 }
 
 /**
@@ -62,18 +59,14 @@ int is_digit(char c)
  * Return: Assigned Value
  */
 long int convert_size_number(long int num, int size)
-/* Function for size conversion */
 {
 	if (size == S_LONG)
-/* Checking if size arg determines target data set */		return (num);
+		return (num);
 	else if (size == S_SHORT)
-/*Returns value as number */
-	return ((short)num);
+		return ((short)num);
 
-/*Default scenario:Assigned value 'num' as a digit */
 	return ((int)num);
 }
-
 
 /**
  * convert_size_unsgnd - Assigns anumber to a constant size
@@ -83,14 +76,11 @@ long int convert_size_number(long int num, int size)
  * Return: Assigned Value
  */
 long int convert_size_unsgnd(unsigned long int num, int size)
-/* Function that checks size arg to establish if it targets the data */
 {
-	/* Argument to determine the targhet data for assignment */
 	if (size == S_LONG)
-		return (num); /* Prints a number */
+		return (num);
 	else if (size == S_SHORT)
-		return ((unsigned short)num); /*Prints num as an unsigned short integer */
+		return ((unsigned short)num);
 
 	return ((unsigned int)num);
-	/*  Case Default - Assigned number as an unsigned integer */
 }
