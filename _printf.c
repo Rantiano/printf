@@ -21,21 +21,20 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		/* Loop inside string formart */
-		if (format[i] != '%')
-		{
-			/* If yoou dont find '%' print Error the
-                       add it to the buffer */
-			buffer[buff_ind++] = format[i];
-			/* Is Buffer Full!? Display its contects 			and initialize the index of buffer */
-			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[i], 1);*/
-			printed_chars++;
-		}
-		else
-		{
-			/* Space holders incase there will be more code later to handle specifiers */
+	/* Loop inside string formart */
+	if (format[i] != '%')
+	{
+	/* If yoou dont find '%' print Error the add it to the buffer */
+	buffer[buff_ind++] = format[i];
+	/* Is Buffer Full!? Display its contects and initialize the index of buffer */
+	if (buff_ind == BUFF_SIZE)
+	print_buffer(buffer, &buff_ind);
+	/* write(1, &format[i], 1);*/
+	printed_chars++;
+	}
+	else
+	{
+	/* Space holders incase there will be more code later to handle specifiers */
 			/* Place it here '%' plus any other specifiers' */
 			print_buffer(buffer, &buff_ind);
 			/* If you find anything else inside the buffer, output it on the Terminal */
@@ -56,7 +55,7 @@ int _printf(const char *format, ...)
 	print_buffer(buffer, &buff_ind);
 
 	va_end(list);
- 	/* Terminate at this point */
+	/* Terminate at this point */
 	return (printed_chars);
 }
 

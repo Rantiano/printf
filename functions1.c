@@ -146,7 +146,7 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 	int flags, char flag_ch, int width, int precision, int size)
 /* Function that converts unsigned int to hexa rep.s */
 /* Takes 2 arg variables */
-/8 character mapping array for hexa xaters */
+/* character mapping array for hexa xaters */
 {
 	int i = BUFF_SIZE - 2;
 /* Defines buffer size */
