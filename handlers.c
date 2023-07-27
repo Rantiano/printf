@@ -1,7 +1,7 @@
 #include "main.h"
 
 /*=====================* WRITE HANDLE *=====================*/
-/* 
+/**
  * handle_write_char - function to write a char
  * @c:a type of  char
  * @buffer: Arrays to a Buffer
@@ -58,7 +58,7 @@ int handle_write_char(char c, char buffer[],
  * write_number - outputs a string
  * @is_negative: arguments types
  * @ind: types of characters.
- * @buffer: Arrays to  Buffer 
+ * @buffer: Arrays to  Buffer
  * @flags: Get current flags
  * @width: calculate width
  * @precision: precision parameter
@@ -89,12 +89,14 @@ int write_number(int is_negative, int ind, char buffer[],
 	/* '', is set if the character is extra */
 	else if (flags & F_SPACE)
 		extra_ch = ' ';
-/*write num, function with provide parameters
+/*
+ * write num, function with provide parameters
  * Find, at the start of buffer index
  * buffer, writes number into buffer
- * flags, width, precision and formatting 
+ * flags, width, precision and formatting
  * padd, formating for the padding character
- * extra_ch, additional character representation*/
+ * extra_ch, additional character representation
+ */
 	return (write_num(ind, buffer, flags, width, precision,
 		length, padd, extra_ch));
 /*Returns all the parameters */
@@ -113,12 +115,13 @@ int write_number(int is_negative, int ind, char buffer[],
  *
  * Return: Number of printed chars.
  */
-/* Function that writes a number of characters in a buffer with formatting options */
-/*Takes several parameters as listed below */	
+/* Function that writes num of char in a buffer with formatting options */
+/*Takes several parameters as listed below */
 	int write_num(int ind, char buffer[],
 	int flags, int width, int prec,
 	int length, char padd, char extra_c)
-/*Parameters
+/**
+ * Parameters
  * int ind: Buffer indexing
  * char buffer: placeholder for the number
  * int flags: Control that provides formatting options
@@ -126,11 +129,14 @@ int write_number(int is_negative, int ind, char buffer[],
  * int prec: number of digits after output
  * int length: Actual length of number to be written
  * char padd: character used forpadding
- * char extr_c: calcuated length*/
+ * char extr_c: calcuated length
+ */
 {
 	int i, padd_start = 1;
-/*When precision is 0, index is at buffer's end
- * and when width is zero, the no character to be printed so value to be dispalyed is 0
+/*
+ * When precision is 0, index is at buffer's end
+ * and when width is zero, the no character to be printed
+ * so value to be dispalyed is 0
  */
 	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0' && width == 0)
 /*If precision is equal to 0, index is at the end of buffer */
@@ -177,14 +183,14 @@ int write_number(int is_negative, int ind, char buffer[],
 	/*place 'extra_c' at the top most position */
 			return (write(1, &buffer[padd_start], i - padd_start) +
 				write(1, &buffer[ind], length - (1 - padd_start)));
-		 /*output characters before length and characters before index i */ 
+		/*output characters before length and characters before index i */
 		}
 	}
 	if (extra_c)
 		buffer[--ind] = extra_c;
-	 /* place 'extra_c' at the top most position */ 
+	/* place 'extra_c' at the top most position */
 	return (write(1, &buffer[ind], length));
- /*write characters 'pad_start' then write length */ 
+/*write characters 'pad_start' then write length */
 }
 
 /**

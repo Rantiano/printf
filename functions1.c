@@ -98,11 +98,12 @@ int print_unsigned(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 	/*Variable declaration to be used in this function*/
 {
-	 /*Variable initialization*/
-	 int i = BUFF_SIZE - 2;
+	/*Variable initialization*/
+	int i = BUFF_SIZE - 2;
 
-	 unsigned long int num = va_arg(types, unsigned long int);
-	 num = convert_size_unsgnd(num, size);
+	unsigned long int num = va_arg(types, unsigned long int);
+
+	num = convert_size_unsgnd(num, size);
 	/*num initialization*/
 	if (num == 0)
 	buffer[i--] = '0';
@@ -140,19 +141,19 @@ int print_octal(va_list types, char buffer[],
 	UNUSED(init_num);
 	UNUSED(size);
 	UNUSED(precision);
-	UNUSED(flags);	
+	UNUSED(flags);
 	num = convert_size_unsgnd(num, size);
 	/*check num*/
 	if (num == 0)
 	buffer[i--] = '0';
-	
+
 	buffer[BUFF_SIZE - 1] = '\0';
-	
+
 	while (num > 0)
 	{
 		buffer[i--] = (num % 8) + '0';
 		num /= 8;
-	}	
+	}
 	if (flags & F_HASH && init_num != 0)
 	buffer[i--] = '0';
 	i++;

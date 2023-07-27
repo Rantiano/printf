@@ -22,8 +22,8 @@ int get_width(const char *format, int *i, va_list list)
 		/*Checks if current character is a digit */
 		if (is_digit(format[curr_i]))
 		{
-		/* is it Digit, Calculates the width */	
-		/* Build a No. from the digit assuming there is no leadind zero's*/	
+		/* is it Digit, Calculates the width */
+		/* Build a No. from the digit assuming there is no leadind zero's*/
 			width *= 10;
 			width += format[curr_i] - '0';
 		}
